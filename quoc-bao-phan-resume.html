@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quoc Bao Phan, CPA — Interactive Resume</title>
+<meta name="description" content="Quoc Bao Phan, CPA — corporate tax analyst. ASC 740, CAMT, partnership basis, M&amp;A tax analysis.">
+<meta property="og:title" content="Quoc Bao Phan, CPA — Interactive Resume">
+<meta property="og:description" content="CPA and corporate tax analyst. ASC 740, CAMT, partnership basis, and M&amp;A tax analysis at a Fortune 500 energy company.">
+<meta property="og:type" content="profile">
+<style>
+:root{
+  --bg:#f6f8fa; --card:#ffffff; --ink:#1f252b; --head:#1c2b39;
+  --muted:#5b6b78; --accent:#0089d1; --line:#e3e8ed; --chip:#eef4f9;
+  --shadow:0 1px 2px rgba(28,43,57,.06),0 8px 24px rgba(28,43,57,.08);
+}
+html[data-theme="dark"]{
+  --bg:#11171d; --card:#181f27; --ink:#e6ecf2; --head:#ffffff;
+  --muted:#93a3b1; --accent:#4cb3ea; --line:#27323d; --chip:#1f2933;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px 80px}
+
+/* ---------- header ---------- */
+header{padding:56px 0 28px}
+h1{font-size:40px;line-height:1.15;margin:0 0 6px;color:var(--head);letter-spacing:-.02em}
+h1 span{color:var(--accent);font-weight:600}
+.contact{color:var(--muted);font-size:15px;margin:0 0 20px}
+.contact a{color:var(--accent);text-decoration:none}
+.contact a:hover{text-decoration:underline}
+.summary{font-size:17px;color:var(--ink);margin:0;max-width:68ch}
+
+/* ---------- toolbar ---------- */
+.toolbar{position:sticky;top:0;z-index:50;background:var(--bg);
+  border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:28px;
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);
+  padding:7px 13px;border-radius:999px;font-size:13.5px;cursor:pointer;
+  transition:all .15s;font-family:inherit}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+#q{flex:1;min-width:170px;border:1px solid var(--line);background:var(--card);
+  color:var(--ink);padding:7px 13px;border-radius:999px;font-size:13.5px;
+  font-family:inherit;outline:none}
+#q:focus{border-color:var(--accent)}
+.spacer{flex:1}
+
+/* ---------- sections ---------- */
+h2{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);
+  margin:44px 0 18px;font-weight:700}
+.job{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;margin-bottom:14px;box-shadow:var(--shadow);transition:.2s}
+.job-head{display:flex;justify-content:space-between;align-items:baseline;
+  gap:14px;flex-wrap:wrap;cursor:pointer;user-select:none}
+.job-title{font-weight:700;font-size:17.5px;color:var(--head);margin:0}
+.job-co{color:var(--muted);font-size:14.5px;margin:3px 0 0}
+.job-date{color:var(--muted);font-size:13.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.caret{color:var(--muted);font-size:12px;transition:transform .2s;margin-left:auto}
+.job.closed .caret{transform:rotate(-90deg)}
+.job.closed ul{display:none}
+ul{list-style:none;padding:0;margin:16px 0 0}
+li{position:relative;padding:9px 0 9px 18px;border-top:1px solid var(--line);
+  font-size:15.2px;transition:opacity .2s}
+li:before{content:"";position:absolute;left:0;top:17px;width:5px;height:5px;
+  border-radius:50%;background:var(--accent);opacity:.55}
+li b{color:var(--head)}
+li.dim{display:none}
+mark{background:rgba(0,137,209,.22);color:inherit;border-radius:3px;padding:0 2px}
+
+/* ---------- skills ---------- */
+.skills{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;box-shadow:var(--shadow)}
+.srow{display:flex;gap:16px;padding:12px 0;border-top:1px solid var(--line);flex-wrap:wrap}
+.srow:first-child{border-top:0;padding-top:0}
+.slabel{font-weight:700;color:var(--accent);font-size:13px;min-width:110px;
+  text-transform:uppercase;letter-spacing:.06em;padding-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;flex:1}
+.tag{background:var(--chip);border:1px solid var(--line);border-radius:7px;
+  padding:4px 10px;font-size:13.5px;color:var(--ink)}
+
+/* ---------- education ---------- */
+.edu{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:6px 22px;box-shadow:var(--shadow)}
+.edu-row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:15px 0;border-top:1px solid var(--line)}
+.edu-row:first-child{border-top:0}
+.edu-school{font-weight:700;color:var(--head);font-size:15.5px}
+.edu-detail{color:var(--muted);font-size:14.2px;margin-top:2px}
+.edu-date{color:var(--muted);font-size:13.5px;white-space:nowrap}
+.cpa{border-left:3px solid var(--accent);padding-left:12px}
+
+footer{margin-top:50px;padding-top:22px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:13px;text-align:center}
+.empty{color:var(--muted);font-size:15px;padding:20px 0;display:none}
+
+@media(max-width:560px){h1{font-size:30px}header{padding:36px 0 20px}}
+@media print{
+  .toolbar{display:none}
+  body{background:#fff}
+  .job,.skills,.edu{box-shadow:none;break-inside:avoid;border-color:#ccc}
+  .job.closed ul{display:block}
+  li.dim{display:block}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Quoc Bao Phan<span>, CPA</span></h1>
+  <p class="contact">Tulsa, Oklahoma &nbsp;•&nbsp;
+     <a href="mailto:baoqphan29@gmail.com">baoqphan29@gmail.com</a></p>
+  <p class="summary">CPA with four years of corporate tax experience at a Fortune 500 energy company, spanning ASC&nbsp;740 provisions, deferred tax asset and liability analysis, and multi-state and FERC provisions across a complex multi-entity consolidated and partnership structure. Interprets and operationalizes evolving Treasury and FASB guidance, builds audit-defense documentation substantiating book-tax differences, and supports M&amp;A tax analysis through purchase price adjustments and post-acquisition integration.</p>
+</header>
+
+<div class="toolbar">
+  <input id="q" type="search" placeholder="Search the resume…" aria-label="Search resume">
+  <button class="btn on" data-f="all">All</button>
+  <button class="btn" data-f="provision">Provision</button>
+  <button class="btn" data-f="ma">M&amp;A</button>
+  <button class="btn" data-f="partnership">Partnership</button>
+  <button class="btn" data-f="modeling">Modeling</button>
+  <button class="btn" data-f="automation">Automation</button>
+  <span class="spacer"></span>
+  <button class="btn" id="toggleAll">Collapse all</button>
+  <button class="btn" id="theme">Dark</button>
+  <button class="btn" onclick="window.print()">Print / PDF</button>
+</div>
+
+<h2>Professional Experience</h2>
+
+<article class="job">
+  <div class="job-head">
+    <div>
+      <p class="job-title">Tax Analyst III</p>
+      <p class="job-co">ONEOK, Inc. &nbsp;│&nbsp; Tulsa, OK</p>
+    </div>
+    <span class="job-date">Feb 2026 – Present</span>
+    <span class="caret">▾</span>
+  </div>
+  <ul>
+    <li data-t="provision modeling"><b>Tax provision.</b> Prepare the monthly and quarterly ASC 740 provision across a multi-entity consolidated group, including current and deferred computations, valuation allowance analysis, interim rate application, and effective tax rate movements period over period.</li>
+    <li data-t="provision modeling"><b>CAMT.</b> Architected and maintain the Corporate Alternative Minimum Tax model supporting compliance and multi-year forecasting, interpreting and operationalizing evolving Treasury guidance under Notices 2025-28, 2025-46, 2025-49, and 2026-7 to refine AFSI adjustments and materially reduce projected CAMT liability.</li>
+    <li data-t="provision"><b>State tax policy.</b> Authored technical memoranda on state tax law changes affecting the consolidated group, modeling multi-year impacts, identifying structural gaps in new guidance, and recommending positions pursued with Government Relations.</li>
+    <li data-t="partnership"><b>Partnership basis and audit defense.</b> Designed and maintain a reconciliation framework for partnership inside and outside basis, establishing audit-defense support and substantiating book-tax differences on the balance sheet; led basis adjustment analysis under Sections 732, 743(b), and 734(b) and allocation analysis under Sections 704(b) and 704(c), supporting planning and structuring at the corporate partner level.</li>
+    <li data-t="modeling automation"><b>Cash tax forecasting.</b> Redesigned the enterprise Cash Tax Forecast model to strengthen accuracy and enable scenario-ready analysis for FP&amp;A, replacing a legacy workbook weakened by years of incremental patches and inconsistent outer-year logic.</li>
+    <li data-t="ma modeling"><b>Acquisition analysis.</b> Lead the tax workstream for the $4.4B Brazos Midland acquisition and the $9.0B Apollo Class B structured equity investment funding it, modeling the cash tax impacts of a non-voting, IRR-capped instrument held at a newly formed holding company.</li>
+    <li data-t="ma"><b>EnLink integration.</b> Assumed interim ownership of Sales &amp; Use Tax compliance for EnLink following the acquisition, filing multi-state returns and supporting the PeopleSoft ERP transition to stabilize operations and mitigate compliance risk.</li>
+  </ul>
+</article>
+
+<article class="job">
+  <div class="job-head">
+    <div>
+      <p class="job-title">Tax Analyst I / II</p>
+      <p class="job-co">ONEOK, Inc. &nbsp;│&nbsp; Tulsa, OK</p>
+    </div>
+    <span class="job-date">Aug 2022 – Feb 2026</span>
+    <span class="caret">▾</span>
+  </div>
+  <ul>
+    <li data-t="provision"><b>Tax accounting.</b> Prepared and managed tax accounting functions under GAAP, including ASC 740 provisions, deferred tax asset and liability analysis, and multi-state and FERC provisions.</li>
+    <li data-t="ma"><b>M&amp;A tax analysis.</b> Supported M&amp;A tax analysis across ONEOK's $18.8B Magellan, $7.6B EnLink, and $2.6B Medallion acquisitions, including purchase price adjustments, asset acquisitions involving complex assumed liabilities, and multi-phase stock acquisitions, ensuring accurate tax treatment and integration.</li>
+    <li data-t="ma provision"><b>Fixed assets.</b> Reconciled and reviewed fixed asset tax basis and depreciation across the consolidated group, validating data between source systems and reported results and supporting acquired-entity basis rollforward.</li>
+    <li data-t="automation"><b>Process automation.</b> Automated recurring compliance and provision workpapers using ONESOURCE and advanced Excel, including rebuilding the excise tax workbook to eliminate manual data entry and reduce preparation time on monthly filings.</li>
+    <li data-t="provision"><b>Regulatory response.</b> Evaluated and implemented responses to regulatory change, including CAMT and IRC §163(j), assessing financial statement impact and communicating outcomes to stakeholders.</li>
+  </ul>
+</article>
+
+<article class="job">
+  <div class="job-head">
+    <div>
+      <p class="job-title">Tax Intern</p>
+      <p class="job-co">ONEOK, Inc. &nbsp;│&nbsp; Tulsa, OK</p>
+    </div>
+    <span class="job-date">Apr 2022 – Aug 2022</span>
+    <span class="caret">▾</span>
+  </div>
+  <ul>
+    <li data-t="provision">Supported research, ASC 740 projects, and fixed asset tax basis maintenance, and contributed to SALT, property, and excise work across multiple state and local regimes.</li>
+  </ul>
+</article>
+
+<article class="job">
+  <div class="job-head">
+    <div>
+      <p class="job-title">Tax Intern</p>
+      <p class="job-co">Grant Thornton, LLP &nbsp;│&nbsp; Tulsa, OK</p>
+    </div>
+    <span class="job-date">Jan 2022 – Apr 2022</span>
+    <span class="caret">▾</span>
+  </div>
+  <ul>
+    <li data-t="partnership provision">Supported provision audits for midstream oil and gas clients and prepared returns for partnerships, corporations, and trusts across several industries.</li>
+  </ul>
+</article>
+
+<p class="empty" id="empty">No bullets match that filter or search.</p>
+
+<h2>Skills &amp; Tools</h2>
+<div class="skills">
+  <div class="srow">
+    <div class="slabel">Tax Technical</div>
+    <div class="tags">
+      <span class="tag">ASC 740 and tax provision</span>
+      <span class="tag">Deferred tax analysis</span>
+      <span class="tag">Valuation allowance</span>
+      <span class="tag">Effective tax rate reconciliation</span>
+      <span class="tag">CAMT and AFSI</span>
+      <span class="tag">IRC §§163(j), 382</span>
+      <span class="tag">Partnership basis adjustments (§§732, 743(b), 734(b))</span>
+      <span class="tag">Partnership allocations (§§704(b), 704(c))</span>
+      <span class="tag">Fixed asset tax basis</span>
+      <span class="tag">Multi-state, FERC, Sales &amp; Use, and excise</span>
+    </div>
+  </div>
+  <div class="srow">
+    <div class="slabel">Systems</div>
+    <div class="tags">
+      <span class="tag">ONESOURCE</span>
+      <span class="tag">PeopleSoft ERP</span>
+      <span class="tag">Oracle</span>
+      <span class="tag">Advanced Excel</span>
+      <span class="tag">Power BI</span>
+      <span class="tag">Microsoft Copilot and GenAI tooling</span>
+    </div>
+  </div>
+</div>
+
+<h2>Education &amp; Certification</h2>
+<div class="edu">
+  <div class="edu-row cpa">
+    <div>
+      <div class="edu-school">Certified Public Accountant</div>
+      <div class="edu-detail">Oklahoma Accountancy Board</div>
+    </div>
+    <div class="edu-date">Issued April 2025</div>
+  </div>
+  <div class="edu-row">
+    <div>
+      <div class="edu-school">Northeastern State University</div>
+      <div class="edu-detail">M.S., Accounting and Financial Analysis &nbsp;│&nbsp; GPA 3.83</div>
+    </div>
+    <div class="edu-date">May 2022 – Aug 2023</div>
+  </div>
+  <div class="edu-row">
+    <div>
+      <div class="edu-school">Northeastern State University</div>
+      <div class="edu-detail">B.S., Accounting and Finance &nbsp;│&nbsp; GPA 3.95</div>
+    </div>
+    <div class="edu-date">May 2020 – May 2022</div>
+  </div>
+  <div class="edu-row">
+    <div>
+      <div class="edu-school">Tulsa Community College</div>
+      <div class="edu-detail">A.S., Business Administration &nbsp;│&nbsp; GPA 4.00</div>
+    </div>
+    <div class="edu-date">May 2018 – May 2020</div>
+  </div>
+</div>
+
+<footer>References and a printable copy available on request.</footer>
+
+</div>
+
+<script>
+var bullets = Array.prototype.slice.call(document.querySelectorAll('li[data-t]'));
+var jobs    = Array.prototype.slice.call(document.querySelectorAll('.job'));
+var filter  = 'all';
+
+/* store clean text once so highlighting never corrupts the source */
+bullets.forEach(function(li){ li.dataset.html = li.innerHTML; });
+
+function esc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+function apply(){
+  var term = document.getElementById('q').value.trim();
+  var rx = term ? new RegExp('('+esc(term)+')','ig') : null;
+  var shown = 0;
+
+  bullets.forEach(function(li){
+    li.innerHTML = li.dataset.html;
+    var tagOK  = filter === 'all' || li.dataset.t.indexOf(filter) > -1;
+    var textOK = !term || li.textContent.toLowerCase().indexOf(term.toLowerCase()) > -1;
+    var ok = tagOK && textOK;
+    li.classList.toggle('dim', !ok);
+    if(ok){
+      shown++;
+      if(rx) li.innerHTML = li.innerHTML.replace(/>([^<]+)</g, function(m,t){
+        return '>' + t.replace(rx,'<mark>$1</mark>') + '<';
+      });
+    }
+  });
+
+  /* hide a job card entirely when none of its bullets survive */
+  jobs.forEach(function(j){
+    var any = j.querySelectorAll('li:not(.dim)').length > 0;
+    j.style.display = any ? '' : 'none';
+    if(any) j.classList.remove('closed');
+  });
+  document.getElementById('empty').style.display = shown ? 'none' : 'block';
+}
+
+document.querySelectorAll('.btn[data-f]').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.btn[data-f]').forEach(function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    filter = b.dataset.f;
+    apply();
+  });
+});
+
+document.getElementById('q').addEventListener('input', apply);
+
+/* expand / collapse individual roles */
+document.querySelectorAll('.job-head').forEach(function(h){
+  h.addEventListener('click', function(){ h.parentElement.classList.toggle('closed'); });
+});
+
+var tAll = document.getElementById('toggleAll');
+tAll.addEventListener('click', function(){
+  var collapse = tAll.textContent.indexOf('Collapse') === 0;
+  jobs.forEach(function(j){ j.classList.toggle('closed', collapse); });
+  tAll.textContent = collapse ? 'Expand all' : 'Collapse all';
+});
+
+/* theme */
+var th = document.getElementById('theme');
+th.addEventListener('click', function(){
+  var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+  th.textContent = dark ? 'Dark' : 'Light';
+});
+</script>
+</body>
+</html>
