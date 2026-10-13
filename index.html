@@ -3,339 +3,639 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quoc Bao Phan, CPA — Interactive Resume</title>
-<meta name="description" content="Quoc Bao Phan, CPA — corporate tax analyst. ASC 740, CAMT, partnership basis, M&amp;A tax analysis.">
-<meta property="og:title" content="Quoc Bao Phan, CPA — Interactive Resume">
-<meta property="og:description" content="CPA and corporate tax analyst. ASC 740, CAMT, partnership basis, and M&amp;A tax analysis at a Fortune 500 energy company.">
+<title>Quoc Bao Phan, CPA | Tax · Finance · AI & Automation</title>
+<meta name="description" content="Interactive resume of Quoc Bao Phan, CPA. Corporate tax, financial modeling, M&A analysis, and AI and automation at a Fortune 500 energy company.">
+<meta property="og:title" content="Quoc Bao Phan, CPA | Interactive Resume">
+<meta property="og:description" content="Corporate tax, financial modeling, M&A analysis, and AI and automation.">
 <meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f6f8fa; --card:#ffffff; --ink:#1f252b; --head:#1c2b39;
-  --muted:#5b6b78; --accent:#0089d1; --line:#e3e8ed; --chip:#eef4f9;
-  --shadow:0 1px 2px rgba(28,43,57,.06),0 8px 24px rgba(28,43,57,.08);
+  --bg:#05070d;--bg2:#0a0f1c;--glass:rgba(255,255,255,.045);--glass2:rgba(255,255,255,.08);
+  --line:rgba(140,170,255,.14);--ink:#e8eefc;--muted:#8d9bb8;--head:#fff;
+  --c1:#22d3ee;--c2:#8b5cf6;--c3:#f472b6;--ok:#34d399;
+  --grad:linear-gradient(120deg,var(--c1),var(--c2) 55%,var(--c3));
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --radius:18px;
 }
-html[data-theme="dark"]{
-  --bg:#11171d; --card:#181f27; --ink:#e6ecf2; --head:#ffffff;
-  --muted:#93a3b1; --accent:#4cb3ea; --line:#27323d; --chip:#1f2933;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+html[data-theme="light"]{
+  --bg:#f4f7fc;--bg2:#e9eef8;--glass:rgba(255,255,255,.75);--glass2:rgba(255,255,255,.95);
+  --line:rgba(40,60,120,.14);--ink:#1b2438;--muted:#5a6784;--head:#0b1222;
+  --c1:#0891b2;--c2:#7c3aed;--c3:#db2777;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
-  font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
-.wrap{max-width:860px;margin:0 auto;padding:0 20px 80px}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+#net{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
+.glow{position:fixed;width:620px;height:620px;border-radius:50%;filter:blur(120px);opacity:.18;z-index:0;pointer-events:none}
+.glow.a{background:var(--c2);top:-200px;right:-160px}.glow.b{background:var(--c1);bottom:-260px;left:-200px}
+a{color:var(--c1);text-decoration:none}a:hover{text-decoration:underline}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mono{font-family:var(--mono)}
 
-/* ---------- header ---------- */
-header{padding:56px 0 28px}
-h1{font-size:40px;line-height:1.15;margin:0 0 6px;color:var(--head);letter-spacing:-.02em}
-h1 span{color:var(--accent);font-weight:600}
-.contact{color:var(--muted);font-size:15px;margin:0 0 20px}
-.contact a{color:var(--accent);text-decoration:none}
-.contact a:hover{text-decoration:underline}
-.summary{font-size:17px;color:var(--ink);margin:0;max-width:68ch}
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 22px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:18px;color:var(--head);display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo i{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center;font-style:normal;color:#fff;font-size:13px;font-family:var(--mono)}
+.links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.links a{color:var(--muted);font-size:14px;font-weight:500;padding:7px 12px;border-radius:10px;transition:.2s}
+.links a:hover{color:var(--head);background:var(--glass);text-decoration:none}
+.links a.on{color:var(--head);background:var(--glass2);box-shadow:inset 0 0 0 1px var(--line)}
+.icon-btn{border:1px solid var(--line);background:var(--glass);color:var(--ink);height:34px;min-width:34px;padding:0 10px;border-radius:10px;
+  cursor:pointer;font:500 13px Inter,sans-serif;display:inline-flex;align-items:center;gap:6px;transition:.2s}
+.icon-btn:hover{border-color:var(--c1);color:var(--c1)}
+.kbd{font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--muted)}
+#menuBtn{display:none}
 
-/* ---------- toolbar ---------- */
-.toolbar{position:sticky;top:0;z-index:50;background:var(--bg);
-  border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:28px;
-  display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);
-  padding:7px 13px;border-radius:999px;font-size:13.5px;cursor:pointer;
-  transition:all .15s;font-family:inherit}
-.btn:hover{border-color:var(--accent);color:var(--accent)}
-.btn.on{background:var(--accent);border-color:var(--accent);color:#fff}
-#q{flex:1;min-width:170px;border:1px solid var(--line);background:var(--card);
-  color:var(--ink);padding:7px 13px;border-radius:999px;font-size:13.5px;
-  font-family:inherit;outline:none}
-#q:focus{border-color:var(--accent)}
-.spacer{flex:1}
+/* ---------- layout ---------- */
+main{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:96px 22px 60px}
+.page{display:none;animation:fade .5s ease}
+.page.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--c1);margin:0 0 10px}
+h1{font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.035em;margin:0 0 18px;color:var(--head);font-weight:800}
+h2{font-size:clamp(28px,3.6vw,42px);letter-spacing:-.03em;line-height:1.1;margin:0 0 12px;color:var(--head)}
+h3{font-size:19px;margin:0 0 6px;color:var(--head);letter-spacing:-.01em}
+.lead{font-size:18px;color:var(--muted);max-width:70ch;margin:0 0 28px}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);padding:24px;backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);position:relative;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card.hov:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c1) 50%,transparent);
+  box-shadow:0 18px 50px -20px color-mix(in srgb,var(--c2) 60%,transparent)}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.sec{margin-top:70px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;cursor:pointer;
+  border:1px solid var(--line);background:var(--glass);color:var(--ink);transition:.2s;font-family:inherit}
+.btn:hover{border-color:var(--c1);text-decoration:none;transform:translateY(-1px)}
+.btn.pri{background:var(--grad);color:#fff;border:0;box-shadow:0 10px 30px -10px var(--c2)}
+.chip{display:inline-block;font-size:12.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--glass);color:var(--ink);margin:3px 4px 3px 0}
+.chip.ai{border-color:color-mix(in srgb,var(--c1) 55%,transparent);color:var(--c1)}
 
-/* ---------- sections ---------- */
-h2{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);
-  margin:44px 0 18px;font-weight:700}
-.job{background:var(--card);border:1px solid var(--line);border-radius:14px;
-  padding:20px 22px;margin-bottom:14px;box-shadow:var(--shadow);transition:.2s}
-.job-head{display:flex;justify-content:space-between;align-items:baseline;
-  gap:14px;flex-wrap:wrap;cursor:pointer;user-select:none}
-.job-title{font-weight:700;font-size:17.5px;color:var(--head);margin:0}
-.job-co{color:var(--muted);font-size:14.5px;margin:3px 0 0}
-.job-date{color:var(--muted);font-size:13.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
-.caret{color:var(--muted);font-size:12px;transition:transform .2s;margin-left:auto}
-.job.closed .caret{transform:rotate(-90deg)}
-.job.closed ul{display:none}
-ul{list-style:none;padding:0;margin:16px 0 0}
-li{position:relative;padding:9px 0 9px 18px;border-top:1px solid var(--line);
-  font-size:15.2px;transition:opacity .2s}
-li:before{content:"";position:absolute;left:0;top:17px;width:5px;height:5px;
-  border-radius:50%;background:var(--accent);opacity:.55}
-li b{color:var(--head)}
-li.dim{display:none}
-mark{background:rgba(0,137,209,.22);color:inherit;border-radius:3px;padding:0 2px}
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;min-height:calc(100vh - 160px)}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);border:1px solid var(--line);
+  padding:6px 12px;border-radius:999px;background:var(--glass);margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 var(--ok);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.6)}70%{box-shadow:0 0 0 10px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.typed{font-family:var(--mono);color:var(--c1);font-size:clamp(16px,2vw,21px);min-height:32px;margin:0 0 20px}
+.typed::after{content:"▋";animation:blink 1s steps(1) infinite;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.term{font-family:var(--mono);font-size:13.5px;padding:0;overflow:hidden}
+.term-bar{display:flex;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.term-bar span{width:11px;height:11px;border-radius:50%;background:#ff5f57}.term-bar span:nth-child(2){background:#febc2e}.term-bar span:nth-child(3){background:#28c840}
+.term-bar b{margin-left:auto;font-weight:400;color:var(--muted);font-size:12px}
+.term-body{padding:18px 20px;min-height:310px;white-space:pre-wrap;line-height:1.75}
+.k{color:var(--c2)}.s{color:var(--ok)}.c{color:var(--muted)}.n{color:var(--c3)}
+
+/* ---------- lens ---------- */
+.lens{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 26px;padding:10px;border-radius:16px;border:1px solid var(--line);background:var(--glass)}
+.lens span{font-family:var(--mono);font-size:12px;color:var(--muted);padding:0 8px;letter-spacing:.1em;text-transform:uppercase}
+.lens button{border:1px solid transparent;background:transparent;color:var(--muted);padding:8px 14px;border-radius:10px;cursor:pointer;font:600 14px Inter,sans-serif;transition:.2s}
+.lens button:hover{color:var(--head)}
+.lens button.on{background:var(--grad);color:#fff}
+
+/* ---------- stats ---------- */
+.stat{text-align:left}
+.stat .num{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.stat p{color:var(--muted);margin:8px 0 0;font-size:14px}
+
+/* ---------- timeline ---------- */
+.tl{position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--c1),var(--c2),transparent)}
+.role{margin-bottom:22px}
+.role::before{content:"";position:absolute;left:-30px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--c1);box-shadow:0 0 18px var(--c1)}
+.role-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;cursor:pointer;align-items:flex-start}
+.role-head .meta{color:var(--muted);font-size:14px}
+.date{font-family:var(--mono);font-size:12.5px;color:var(--c1);border:1px solid var(--line);padding:4px 10px;border-radius:8px;white-space:nowrap}
+.role ul{list-style:none;padding:0;margin:16px 0 0}
+.role li{padding:12px 14px 12px 34px;border-radius:12px;position:relative;margin-bottom:6px;border:1px solid transparent;transition:.25s;font-size:15.2px}
+.role li::before{content:"›";position:absolute;left:14px;top:11px;color:var(--c1);font-weight:700}
+.role li b{color:var(--head)}
+.role li.hit{background:color-mix(in srgb,var(--c2) 9%,transparent);border-color:color-mix(in srgb,var(--c2) 35%,transparent)}
+.role li.hit::after{content:attr(data-badge);position:absolute;right:12px;top:-9px;font:600 10.5px var(--mono);letter-spacing:.06em;
+  background:var(--grad);color:#fff;padding:2px 8px;border-radius:6px}
+.role li.dim{opacity:.38}
+.role.closed ul{display:none}
+.caret{transition:transform .2s;color:var(--muted)}.role.closed .caret{transform:rotate(-90deg)}
+.filterbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.filterbar input{flex:1;min-width:220px;padding:11px 16px;border-radius:12px;border:1px solid var(--line);background:var(--glass);color:var(--ink);font:15px Inter,sans-serif;outline:none}
+.filterbar input:focus{border-color:var(--c1)}
+mark{background:color-mix(in srgb,var(--c1) 30%,transparent);color:inherit;border-radius:4px;padding:0 2px}
+
+/* ---------- projects ---------- */
+.proj{cursor:pointer;display:flex;flex-direction:column}
+.proj .tagline{color:var(--muted);font-size:14.5px;flex:1}
+.proj .icon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;margin-bottom:16px;
+  background:color-mix(in srgb,var(--c2) 18%,transparent);border:1px solid var(--line)}
+.proj .more{font-family:var(--mono);font-size:12.5px;color:var(--c1);margin-top:14px}
+.modal{position:fixed;inset:0;z-index:100;display:none;place-items:center;background:rgba(3,5,12,.7);backdrop-filter:blur(6px);padding:20px}
+.modal.on{display:grid;animation:fade .3s}
+.modal .card{max-width:760px;width:100%;max-height:88vh;overflow:auto;background:var(--bg2)}
+.close{position:absolute;right:16px;top:14px}
+.stage{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.stage b{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--c1);padding-top:3px}
+
+/* ---------- AI lab ---------- */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.node{flex:1;min-width:150px;text-align:center;padding:18px 12px;border:1px solid var(--line);border-radius:14px;background:var(--glass);position:relative}
+.node small{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
+.arrow{display:grid;place-items:center;width:34px;color:var(--c1);font-size:20px;animation:flow 1.6s infinite}
+@keyframes flow{50%{transform:translateX(4px);opacity:.5}}
+.chat{display:flex;flex-direction:column;height:460px;padding:0;overflow:hidden}
+.chat-log{flex:1;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:85%;padding:11px 15px;border-radius:14px;font-size:14.8px;line-height:1.55}
+.msg.bot{background:var(--glass2);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.me{background:var(--grad);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-in{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.chat-in input{flex:1;padding:11px 14px;border-radius:11px;border:1px solid var(--line);background:var(--glass);color:var(--ink);font:15px Inter,sans-serif;outline:none}
+.sugg{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 12px}
+.sugg button{font:12.5px Inter,sans-serif;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:5px 11px;cursor:pointer}
+.sugg button:hover{color:var(--c1);border-color:var(--c1)}
+.typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--muted);margin:0 2px;animation:bounce 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{50%{transform:translateY(-5px)}}
 
 /* ---------- skills ---------- */
-.skills{background:var(--card);border:1px solid var(--line);border-radius:14px;
-  padding:20px 22px;box-shadow:var(--shadow)}
-.srow{display:flex;gap:16px;padding:12px 0;border-top:1px solid var(--line);flex-wrap:wrap}
-.srow:first-child{border-top:0;padding-top:0}
-.slabel{font-weight:700;color:var(--accent);font-size:13px;min-width:110px;
-  text-transform:uppercase;letter-spacing:.06em;padding-top:4px}
-.tags{display:flex;flex-wrap:wrap;gap:6px;flex:1}
-.tag{background:var(--chip);border:1px solid var(--line);border-radius:7px;
-  padding:4px 10px;font-size:13.5px;color:var(--ink)}
+.skill-group h3{display:flex;align-items:center;gap:10px}
+.skill-group h3 i{font-style:normal;font-size:20px}
+.tool{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:14.5px}
+.tool:first-of-type{border-top:0}
+.tool span{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
 
 /* ---------- education ---------- */
-.edu{background:var(--card);border:1px solid var(--line);border-radius:14px;
-  padding:6px 22px;box-shadow:var(--shadow)}
-.edu-row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
-  padding:15px 0;border-top:1px solid var(--line)}
-.edu-row:first-child{border-top:0}
-.edu-school{font-weight:700;color:var(--head);font-size:15.5px}
-.edu-detail{color:var(--muted);font-size:14.2px;margin-top:2px}
-.edu-date{color:var(--muted);font-size:13.5px;white-space:nowrap}
-.cpa{border-left:3px solid var(--accent);padding-left:12px}
+.edu{display:flex;gap:18px;align-items:flex-start}
+.badge{flex:none;width:58px;height:58px;border-radius:16px;display:grid;place-items:center;font-weight:800;font-size:16px;color:#fff;background:var(--grad)}
+.gpa{font-family:var(--mono);color:var(--c1);font-size:13px}
 
-footer{margin-top:50px;padding-top:22px;border-top:1px solid var(--line);
-  color:var(--muted);font-size:13px;text-align:center}
-.empty{color:var(--muted);font-size:15px;padding:20px 0;display:none}
+/* ---------- palette ---------- */
+.pal{position:fixed;inset:0;z-index:110;display:none;justify-content:center;align-items:flex-start;padding-top:14vh;background:rgba(3,5,12,.6);backdrop-filter:blur(4px)}
+.pal.on{display:flex}
+.pal-box{width:min(620px,92vw);background:var(--bg2);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px -20px #000}
+.pal-box input{width:100%;padding:18px 20px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);font:17px Inter,sans-serif;outline:none}
+.pal-list{max-height:340px;overflow:auto;padding:8px}
+.pal-item{padding:11px 14px;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;font-size:15px}
+.pal-item span{color:var(--muted);font-family:var(--mono);font-size:12px}
+.pal-item.sel,.pal-item:hover{background:var(--glass2)}
 
-@media(max-width:560px){h1{font-size:30px}header{padding:36px 0 20px}}
-@media print{
-  .toolbar{display:none}
-  body{background:#fff}
-  .job,.skills,.edu{box-shadow:none;break-inside:avoid;border-color:#ccc}
-  .job.closed ul{display:block}
-  li.dim{display:block}
-  a{color:#000;text-decoration:none}
+footer{position:relative;z-index:1;text-align:center;color:var(--muted);font-size:13px;padding:30px 20px 40px;border-top:1px solid var(--line)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:920px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:20px}
+  .g3,.g4{grid-template-columns:repeat(2,1fr)}
+  .links{display:none;position:absolute;top:58px;left:0;right:0;flex-direction:column;background:var(--bg2);padding:12px;border-bottom:1px solid var(--line)}
+  .links.open{display:flex}
+  #menuBtn{display:inline-flex;margin-left:auto}
 }
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}.stage{grid-template-columns:1fr}.arrow{transform:rotate(90deg);width:100%;height:26px}}
+@media print{
+  nav,#net,.glow,.lens,.filterbar,.cta,.modal,.pal,#lab,footer{display:none!important}
+  body{background:#fff;color:#000}.page{display:block!important}.card{border-color:#ccc;background:#fff}
+  .role.closed ul{display:block}.reveal{opacity:1;transform:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
+<canvas id="net"></canvas><div class="glow a"></div><div class="glow b"></div>
 
-<header>
-  <h1>Quoc Bao Phan<span>, CPA</span></h1>
-  <p class="contact">Tulsa, Oklahoma &nbsp;•&nbsp;
-     <a href="mailto:baoqphan29@gmail.com">baoqphan29@gmail.com</a></p>
-  <p class="summary">CPA with four years of corporate tax experience at a Fortune 500 energy company, spanning ASC&nbsp;740 provisions, deferred tax asset and liability analysis, and multi-state and FERC provisions across a complex multi-entity consolidated and partnership structure. Interprets and operationalizes evolving Treasury and FASB guidance, builds audit-defense documentation substantiating book-tax differences, and supports M&amp;A tax analysis through purchase price adjustments and post-acquisition integration.</p>
-</header>
+<nav><div class="nav-in">
+  <div class="logo" onclick="go('home')"><i>QP</i>Quoc Bao Phan</div>
+  <button class="icon-btn" id="menuBtn" aria-label="Menu">☰</button>
+  <div class="links" id="links">
+    <a href="#home" data-p="home">Home</a>
+    <a href="#experience" data-p="experience">Experience</a>
+    <a href="#projects" data-p="projects">Projects</a>
+    <a href="#lab" data-p="lab">AI Lab</a>
+    <a href="#skills" data-p="skills">Skills</a>
+    <a href="#education" data-p="education">Education</a>
+    <a href="#contact" data-p="contact">Contact</a>
+  </div>
+  <button class="icon-btn" id="palBtn" title="Command palette">⌘ <span class="kbd">K</span></button>
+  <button class="icon-btn" id="theme" title="Toggle theme">◐</button>
+</div></nav>
 
-<div class="toolbar">
-  <input id="q" type="search" placeholder="Search the resume…" aria-label="Search resume">
-  <button class="btn on" data-f="all">All</button>
-  <button class="btn" data-f="provision">Provision</button>
-  <button class="btn" data-f="ma">M&amp;A</button>
-  <button class="btn" data-f="partnership">Partnership</button>
-  <button class="btn" data-f="modeling">Modeling</button>
-  <button class="btn" data-f="automation">Automation</button>
-  <span class="spacer"></span>
-  <button class="btn" id="toggleAll">Collapse all</button>
-  <button class="btn" id="theme">Dark</button>
-  <button class="btn" onclick="window.print()">Print / PDF</button>
-</div>
+<main>
 
-<h2>Professional Experience</h2>
-
-<article class="job">
-  <div class="job-head">
+<!-- ================= HOME ================= -->
+<section class="page" id="p-home">
+  <div class="hero">
     <div>
-      <p class="job-title">Tax Analyst III</p>
-      <p class="job-co">ONEOK, Inc. &nbsp;│&nbsp; Tulsa, OK</p>
+      <div class="status"><span class="dot"></span>Open to new opportunities · Tulsa, OK</div>
+      <p class="eyebrow">CPA · Tax · Finance · AI &amp; Automation</p>
+      <h1>Quoc Bao Phan<span class="grad">, CPA</span></h1>
+      <p class="typed" id="typed"></p>
+      <p class="lead" id="heroLead"></p>
+      <div class="cta">
+        <a class="btn pri" href="#experience">Explore experience →</a>
+        <a class="btn" href="#lab">Ask my resume ✦</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
     </div>
-    <span class="job-date">Feb 2026 – Present</span>
-    <span class="caret">▾</span>
+    <div class="card term">
+      <div class="term-bar"><span></span><span></span><span></span><b>profile.py</b></div>
+      <div class="term-body" id="term"></div>
+    </div>
   </div>
-  <ul>
-    <li data-t="provision modeling"><b>Tax provision.</b> Prepare the monthly and quarterly ASC 740 provision across a multi-entity consolidated group, including current and deferred computations, valuation allowance analysis, interim rate application, and effective tax rate movements period over period.</li>
-    <li data-t="provision modeling"><b>CAMT.</b> Architected and maintain the Corporate Alternative Minimum Tax model supporting compliance and multi-year forecasting, interpreting and operationalizing evolving Treasury guidance under Notices 2025-28, 2025-46, 2025-49, and 2026-7 to refine AFSI adjustments and materially reduce projected CAMT liability.</li>
-    <li data-t="provision"><b>State tax policy.</b> Authored technical memoranda on state tax law changes affecting the consolidated group, modeling multi-year impacts, identifying structural gaps in new guidance, and recommending positions pursued with Government Relations.</li>
-    <li data-t="partnership"><b>Partnership basis and audit defense.</b> Designed and maintain a reconciliation framework for partnership inside and outside basis, establishing audit-defense support and substantiating book-tax differences on the balance sheet; led basis adjustment analysis under Sections 732, 743(b), and 734(b) and allocation analysis under Sections 704(b) and 704(c), supporting planning and structuring at the corporate partner level.</li>
-    <li data-t="modeling automation"><b>Cash tax forecasting.</b> Redesigned the enterprise Cash Tax Forecast model to strengthen accuracy and enable scenario-ready analysis for FP&amp;A, replacing a legacy workbook weakened by years of incremental patches and inconsistent outer-year logic.</li>
-    <li data-t="ma modeling"><b>Acquisition analysis.</b> Lead the tax workstream for the $4.4B Brazos Midland acquisition and the $9.0B Apollo Class B structured equity investment funding it, modeling the cash tax impacts of a non-voting, IRR-capped instrument held at a newly formed holding company.</li>
-    <li data-t="ma"><b>EnLink integration.</b> Assumed interim ownership of Sales &amp; Use Tax compliance for EnLink following the acquisition, filing multi-state returns and supporting the PeopleSoft ERP transition to stabilize operations and mitigate compliance risk.</li>
-  </ul>
-</article>
 
-<article class="job">
-  <div class="job-head">
-    <div>
-      <p class="job-title">Tax Analyst I / II</p>
-      <p class="job-co">ONEOK, Inc. &nbsp;│&nbsp; Tulsa, OK</p>
+  <div class="sec reveal">
+    <p class="eyebrow">// by the numbers</p>
+    <div class="grid g4">
+      <div class="card stat"><div class="num grad" data-count="40" data-pre="$" data-suf="B+">0</div><p>Announced acquisitions and structured equity supported</p></div>
+      <div class="card stat"><div class="num grad" data-count="4" data-suf="+ yrs">0</div><p>Corporate tax at a Fortune 500 energy company</p></div>
+      <div class="card stat"><div class="num grad" data-count="5">0</div><p>Major transactions: Magellan, EnLink, Medallion, Brazos Midland, Apollo</p></div>
+      <div class="card stat"><div class="num grad" data-count="4">0</div><p>Treasury notices put into the CAMT model</p></div>
     </div>
-    <span class="job-date">Aug 2022 – Feb 2026</span>
-    <span class="caret">▾</span>
   </div>
-  <ul>
-    <li data-t="provision"><b>Tax accounting.</b> Prepared and managed tax accounting functions under GAAP, including ASC 740 provisions, deferred tax asset and liability analysis, and multi-state and FERC provisions.</li>
-    <li data-t="ma"><b>M&amp;A tax analysis.</b> Supported M&amp;A tax analysis across ONEOK's $18.8B Magellan, $7.6B EnLink, and $2.6B Medallion acquisitions, including purchase price adjustments, asset acquisitions involving complex assumed liabilities, and multi-phase stock acquisitions, ensuring accurate tax treatment and integration.</li>
-    <li data-t="ma provision"><b>Fixed assets.</b> Reconciled and reviewed fixed asset tax basis and depreciation across the consolidated group, validating data between source systems and reported results and supporting acquired-entity basis rollforward.</li>
-    <li data-t="automation"><b>Process automation.</b> Automated recurring compliance and provision workpapers using ONESOURCE and advanced Excel, including rebuilding the excise tax workbook to eliminate manual data entry and reduce preparation time on monthly filings.</li>
-    <li data-t="provision"><b>Regulatory response.</b> Evaluated and implemented responses to regulatory change, including CAMT and IRC §163(j), assessing financial statement impact and communicating outcomes to stakeholders.</li>
-  </ul>
-</article>
 
-<article class="job">
-  <div class="job-head">
-    <div>
-      <p class="job-title">Tax Intern</p>
-      <p class="job-co">ONEOK, Inc. &nbsp;│&nbsp; Tulsa, OK</p>
-    </div>
-    <span class="job-date">Apr 2022 – Aug 2022</span>
-    <span class="caret">▾</span>
+  <div class="sec reveal">
+    <p class="eyebrow">// pick a lens</p>
+    <h2>One profile, built for several roles</h2>
+    <p class="lead">Choose the role you're hiring for. The site reorders and highlights the most relevant experience across every page.</p>
+    <div class="grid g4" id="lensCards"></div>
   </div>
-  <ul>
-    <li data-t="provision">Supported research, ASC 740 projects, and fixed asset tax basis maintenance, and contributed to SALT, property, and excise work across multiple state and local regimes.</li>
-  </ul>
-</article>
 
-<article class="job">
-  <div class="job-head">
-    <div>
-      <p class="job-title">Tax Intern</p>
-      <p class="job-co">Grant Thornton, LLP &nbsp;│&nbsp; Tulsa, OK</p>
+  <div class="sec reveal">
+    <p class="eyebrow">// what I bring</p>
+    <div class="grid g3">
+      <div class="card hov"><h3>⚙️ Automation-first thinking</h3><p style="color:var(--muted);margin:0">I rebuild manual, fragile workbooks into formula-driven, roll-forward-ready models, then put Copilot to work on the repetitive parts.</p></div>
+      <div class="card hov"><h3>📐 Deep technical rigor</h3><p style="color:var(--muted);margin:0">ASC 740, CAMT, partnership basis, and M&amp;A tax across a complex multi-entity consolidated and partnership structure.</p></div>
+      <div class="card hov"><h3>🤝 People who adopt it</h3><p style="color:var(--muted);margin:0">Through the "Tip Tuesday" series, I teach colleagues across Accounting &amp; Finance to use AI in their own work.</p></div>
     </div>
-    <span class="job-date">Jan 2022 – Apr 2022</span>
-    <span class="caret">▾</span>
   </div>
-  <ul>
-    <li data-t="partnership provision">Supported provision audits for midstream oil and gas clients and prepared returns for partnerships, corporations, and trusts across several industries.</li>
-  </ul>
-</article>
+</section>
 
-<p class="empty" id="empty">No bullets match that filter or search.</p>
+<!-- ================= EXPERIENCE ================= -->
+<section class="page" id="p-experience">
+  <p class="eyebrow">// career log</p>
+  <h2>Experience</h2>
+  <p class="lead">Click a role to expand or collapse it. Pick a lens to highlight what fits your role, or search for any keyword.</p>
+  <div class="lens lensbar"></div>
+  <div class="filterbar">
+    <input id="q" type="search" placeholder="Search: CAMT, Copilot, forecast, M&A, Power BI…">
+    <button class="btn" id="toggleAll">Collapse all</button>
+    <button class="btn" onclick="window.print()">Print / PDF</button>
+  </div>
+  <div class="tl" id="timeline"></div>
+</section>
 
-<h2>Skills &amp; Tools</h2>
-<div class="skills">
-  <div class="srow">
-    <div class="slabel">Tax Technical</div>
-    <div class="tags">
-      <span class="tag">ASC 740 and tax provision</span>
-      <span class="tag">Deferred tax analysis</span>
-      <span class="tag">Valuation allowance</span>
-      <span class="tag">Effective tax rate reconciliation</span>
-      <span class="tag">CAMT and AFSI</span>
-      <span class="tag">IRC §§163(j), 382</span>
-      <span class="tag">Partnership basis adjustments (§§732, 743(b), 734(b))</span>
-      <span class="tag">Partnership allocations (§§704(b), 704(c))</span>
-      <span class="tag">Fixed asset tax basis</span>
-      <span class="tag">Multi-state, FERC, Sales &amp; Use, and excise</span>
-    </div>
-  </div>
-  <div class="srow">
-    <div class="slabel">Systems</div>
-    <div class="tags">
-      <span class="tag">ONESOURCE</span>
-      <span class="tag">PeopleSoft ERP</span>
-      <span class="tag">Oracle</span>
-      <span class="tag">Advanced Excel</span>
-      <span class="tag">Power BI</span>
-      <span class="tag">Microsoft Copilot and GenAI tooling</span>
-    </div>
-  </div>
-</div>
+<!-- ================= PROJECTS ================= -->
+<section class="page" id="p-projects">
+  <p class="eyebrow">// case studies</p>
+  <h2>Selected projects</h2>
+  <p class="lead">A closer look at the work behind the resume bullets. Click any card for the challenge, approach, and outcome.</p>
+  <div class="lens lensbar"></div>
+  <div class="grid g3" id="projGrid"></div>
+</section>
 
-<h2>Education &amp; Certification</h2>
-<div class="edu">
-  <div class="edu-row cpa">
-    <div>
-      <div class="edu-school">Certified Public Accountant</div>
-      <div class="edu-detail">Oklahoma Accountancy Board</div>
-    </div>
-    <div class="edu-date">Issued April 2025</div>
-  </div>
-  <div class="edu-row">
-    <div>
-      <div class="edu-school">Northeastern State University</div>
-      <div class="edu-detail">M.S., Accounting and Financial Analysis &nbsp;│&nbsp; GPA 3.83</div>
-    </div>
-    <div class="edu-date">May 2022 – Aug 2023</div>
-  </div>
-  <div class="edu-row">
-    <div>
-      <div class="edu-school">Northeastern State University</div>
-      <div class="edu-detail">B.S., Accounting and Finance &nbsp;│&nbsp; GPA 3.95</div>
-    </div>
-    <div class="edu-date">May 2020 – May 2022</div>
-  </div>
-  <div class="edu-row">
-    <div>
-      <div class="edu-school">Tulsa Community College</div>
-      <div class="edu-detail">A.S., Business Administration &nbsp;│&nbsp; GPA 4.00</div>
-    </div>
-    <div class="edu-date">May 2018 – May 2020</div>
-  </div>
-</div>
+<!-- ================= AI LAB ================= -->
+<section class="page" id="p-lab">
+  <p class="eyebrow">// ai lab</p>
+  <h2>How I put AI to work</h2>
+  <p class="lead">I look at a manual process, figure out which parts AI should handle and which need a person, and then teach the team to use it.</p>
 
-<footer>References and a printable copy available on request.</footer>
+  <div class="card" style="margin-bottom:22px">
+    <h3 style="margin-bottom:16px">My automation playbook</h3>
+    <div class="flow">
+      <div class="node">🔍<br><b>Find the friction</b><small>Manual steps, copy-paste, patched logic</small></div><div class="arrow">→</div>
+      <div class="node">🧱<br><b>Rebuild the structure</b><small>Formula-driven, roll-forward-ready models</small></div><div class="arrow">→</div>
+      <div class="node">🤖<br><b>Add AI</b><small>Copilot for cleansing, reconciliation, variance</small></div><div class="arrow">→</div>
+      <div class="node">✅<br><b>Keep human review</b><small>CPA review of every output</small></div><div class="arrow">→</div>
+      <div class="node">📣<br><b>Share the playbook</b><small>"Tip Tuesday" across Accounting &amp; Finance</small></div>
+    </div>
+  </div>
 
-</div>
+  <div class="grid g2">
+    <div class="card chat">
+      <div class="term-bar"><span></span><span></span><span></span><b>ask-my-resume · scripted assistant</b></div>
+      <div class="chat-log" id="chatLog"></div>
+      <div class="sugg" id="sugg"></div>
+      <form class="chat-in" id="chatForm"><input id="chatQ" placeholder="Ask about AI, CAMT, M&A, education…" autocomplete="off"><button class="btn pri" style="padding:10px 16px">Send</button></form>
+    </div>
+    <div class="grid" style="gap:18px">
+      <div class="card hov"><h3>🧠 Copilot in the Tax Department</h3><p style="color:var(--muted);margin:0 0 10px">I led the department's adoption of Microsoft Copilot and GenAI, using it for data cleansing, workpaper reconciliation, and variance analysis.</p>
+        <span class="chip ai">Microsoft 365 Copilot</span><span class="chip ai">Copilot in Excel</span></div>
+      <div class="card hov"><h3>📅 "Tip Tuesday"</h3><p style="color:var(--muted);margin:0 0 10px">I run a recurring series for Accounting &amp; Finance, part of the broader knowledge initiative, that turns one person's AI shortcuts into habits the whole team uses.</p>
+        <span class="chip ai">Prompt design</span><span class="chip ai">Scheduled prompts</span></div>
+      <div class="card hov"><h3>🛠️ Agent prototyping</h3><p style="color:var(--muted);margin:0 0 10px">I prototype Copilot Studio agents for research, scoping, and recurring task-prioritization workflows.</p>
+        <span class="chip ai">Copilot Studio</span><span class="chip ai">Agent instructions</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="page" id="p-skills">
+  <p class="eyebrow">// stack</p>
+  <h2>Skills &amp; tools</h2>
+  <p class="lead">Grouped by discipline. Each tool shows where I've used it.</p>
+  <div class="grid g2" id="skillGrid"></div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section class="page" id="p-education">
+  <p class="eyebrow">// credentials</p>
+  <h2>Education &amp; certification</h2>
+  <p class="lead">I went from an associate degree to a CPA license in about seven years, with a GPA above 3.8 at every step.</p>
+  <div class="grid" style="gap:16px">
+    <div class="card hov edu"><div class="badge">CPA</div><div><h3>Certified Public Accountant</h3><div style="color:var(--muted)">Oklahoma Accountancy Board · Credential ID 19904</div><div class="gpa">Issued April 2025</div></div></div>
+    <div class="card hov edu"><div class="badge">M.S.</div><div><h3>Northeastern State University</h3><div style="color:var(--muted)">M.S., Accounting and Financial Analysis</div><div class="gpa">GPA 3.83 · May 2022 – Aug 2023</div></div></div>
+    <div class="card hov edu"><div class="badge">B.S.</div><div><h3>Northeastern State University</h3><div style="color:var(--muted)">B.S., Accounting and Finance</div><div class="gpa">GPA 3.95 · May 2020 – May 2022</div></div></div>
+    <div class="card hov edu"><div class="badge">A.S.</div><div><h3>Tulsa Community College</h3><div style="color:var(--muted)">A.S., Business Administration</div><div class="gpa">GPA 4.00 · May 2018 – May 2020</div></div></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="page" id="p-contact">
+  <div style="max-width:760px;margin:6vh auto 0;text-align:center">
+    <p class="eyebrow">// let's connect</p>
+    <h1 style="font-size:clamp(34px,5vw,58px)">Let's build something <span class="grad">smarter</span>.</h1>
+    <p class="lead" style="margin:0 auto 30px">I'm interested in tax, FP&amp;A, corporate development, and finance transformation and AI roles. I'd be glad to talk.</p>
+    <div class="cta" style="justify-content:center">
+      <a class="btn pri" href="mailto:baoqphan29@gmail.com">✉ baoqphan29@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/quoc-bao-phan-cpa-6ab450161/" target="_blank" rel="noopener">in LinkedIn</a>
+      <button class="btn" id="copyEmail">⧉ Copy email</button>
+    </div>
+    <p style="color:var(--muted);margin-top:26px;font-size:14px">📍 Tulsa, Oklahoma · References available on request</p>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="modal"><div class="card"><button class="icon-btn close" onclick="closeModal()">✕</button><div id="modalBody"></div></div></div>
+<div class="pal" id="pal"><div class="pal-box"><input id="palQ" placeholder="Jump to a page, lens, or project…"><div class="pal-list" id="palList"></div></div></div>
+
+<footer>© <span id="yr"></span> Quoc Bao Phan, CPA · Built with an AI-assisted workflow · Press <span class="kbd">Ctrl</span> + <span class="kbd">K</span> to navigate</footer>
 
 <script>
-var bullets = Array.prototype.slice.call(document.querySelectorAll('li[data-t]'));
-var jobs    = Array.prototype.slice.call(document.querySelectorAll('.job'));
-var filter  = 'all';
+/* ===================== DATA ===================== */
+const LENSES={
+  ai:{name:"AI & Automation",icon:"🤖",title:"Finance Transformation & AI",
+    lead:"CPA who brings Microsoft Copilot and GenAI into tax and finance work. I rebuild manual, fragile models into automated, formula-driven tools and train the people who will use them."},
+  tax:{name:"Tax",icon:"📐",title:"Corporate Tax & ASC 740",
+    lead:"CPA with four years of corporate tax at a Fortune 500 energy company: ASC 740 provisions, CAMT, partnership basis, and M&A tax across a complex multi-entity structure."},
+  fpa:{name:"FP&A / Finance",icon:"📈",title:"Financial Planning & Analysis",
+    lead:"I own enterprise forecast models used directly by FP&A, explain forecast-to-actual variances, and measure the financial impact of acquisitions, capital structures, and regulatory change."},
+  bd:{name:"Business Development",icon:"🤝",title:"Corporate Development & M&A",
+    lead:"I've supported more than $40B of announced acquisitions and structured equity investments, building the models and scenario analysis behind investment, structuring, and integration decisions."}
+};
+let lens=localStorage.getItem('lens')||'ai';
 
-/* store clean text once so highlighting never corrupts the source */
-bullets.forEach(function(li){ li.dataset.html = li.innerHTML; });
+const ROLES=[
+ {t:"Tax Analyst III",co:"ONEOK, Inc.",loc:"Tulsa, OK · On-site",d:"Feb 2026 – Present",b:[
+  {k:"ai",h:"AI adoption leadership",x:"Led the adoption of Microsoft Copilot and GenAI in the Tax Department, automating data cleansing, workpaper reconciliation, and variance analysis to cut manual effort and drive measurable efficiency gains."},
+  {k:"ai",h:"Enablement & change management",x:"Contributor to the Accounting & Finance knowledge initiative. I lead the recurring \"Tip Tuesday\" series, which spreads AI best practices such as prompt design, scheduled prompts, and Copilot-driven Excel workflows across the organization."},
+  {k:"ai",h:"Agent & workflow prototyping",x:"Design and prototype Copilot Studio agents for research, scoping, and recurring task-prioritization workflows, turning tax and finance use cases into reusable prompts and instructions."},
+  {k:"ai fpa bd",h:"Enterprise forecast modeling",x:"Rebuilt the enterprise Cash Tax Forecast model, a multi-year planning input FP&A uses directly. It replaced a legacy workbook weakened by years of incremental patches and inconsistent outer-year logic with a streamlined, formula-driven, roll-forward-ready model that delivers scenario-ready outputs with faster turnaround."},
+  {k:"tax fpa ai",h:"CAMT modeling",x:"Architected and maintain the Corporate Alternative Minimum Tax model for compliance and multi-year forecasting. I built Treasury Notices 2025-28, 2025-46, 2025-49, and 2026-7 into structured AFSI adjustment logic, which materially reduced projected CAMT liability."},
+  {k:"tax fpa",h:"Tax provision & variance analysis",x:"Prepare the monthly and quarterly ASC 740 provision across a multi-entity consolidated group, including current and deferred computations, valuation allowance analysis, interim rate application, and period-over-period effective tax rate movements explained to stakeholders."},
+  {k:"bd fpa tax",h:"Transaction analysis",x:"Lead the tax workstream for the $4.4B Brazos Midland acquisition and the $9.0B Apollo Class B structured equity investment that funds it. This includes modeling the multi-year cash impacts of a non-voting, IRR-capped instrument held at a newly formed holding company and evaluating alternative structures with finance and deal counsel."},
+  {k:"tax bd ai",h:"Partnership basis framework",x:"Designed and maintain a standardized reconciliation framework for partnership inside and outside basis. It provides audit-defense support for book-tax differences on the balance sheet and supports basis analysis under IRC §§732, 743(b), and 734(b) and allocation analysis under §§704(b) and 704(c)."},
+  {k:"tax bd fpa",h:"Policy analysis & recommendations",x:"Write technical memoranda on state and federal policy changes that affect the consolidated group. I model multi-year impacts, identify structural gaps in new guidance, and recommend positions pursued jointly with Government Relations."},
+  {k:"tax bd",h:"Post-close integration",x:"Took interim ownership of Sales & Use Tax compliance for EnLink after the acquisition. I filed multi-state returns and supported the PeopleSoft ERP transition to stabilize operations and reduce compliance risk."}
+ ]},
+ {t:"Tax Analyst I / II",co:"ONEOK, Inc.",loc:"Tulsa, OK",d:"Aug 2022 – Feb 2026",b:[
+  {k:"ai fpa",h:"Workpaper automation",x:"Automated recurring compliance, provision, and reporting workpapers using ONESOURCE, advanced Excel, and Power BI. This included rebuilding the excise tax workbook to eliminate manual data entry and shorten monthly preparation time."},
+  {k:"bd tax fpa",h:"M&A support",x:"Supported tax analysis for ONEOK's $18.8B Magellan, $7.6B EnLink, and $2.6B Medallion acquisitions, including purchase price adjustments, asset acquisitions with complex assumed liabilities, and multi-phase stock acquisitions."},
+  {k:"bd fpa",h:"Cross-functional partnering",x:"Worked with FP&A, accounting, legal, and Big Four advisors to evaluate transaction structures, pressure-test assumptions, resolve open technical questions, and explain financial statement impacts to leadership."},
+  {k:"tax",h:"Tax accounting",x:"Prepared ASC 740 provisions under GAAP across a multi-entity consolidated group, including deferred tax asset and liability analysis, effective rate reconciliation, and multi-state and FERC provisions."},
+  {k:"ai fpa tax",h:"Data validation",x:"Reconciled fixed asset tax basis and depreciation across the consolidated group, checking data between source systems and reported results and supporting acquired-entity basis rollforwards."},
+  {k:"tax fpa",h:"Regulatory response",x:"Evaluated and put in place responses to regulatory change, including CAMT and IRC §163(j) interest limitations, assessing financial statement impact and communicating outcomes to stakeholders."}
+ ]},
+ {t:"Tax Intern",co:"ONEOK, Inc.",loc:"Tulsa, OK",d:"Apr 2022 – Aug 2022",b:[
+  {k:"tax",h:"Research & provision",x:"Researched the tax treatment of IRC sections and supported ASC 740 and tax provision projects."},
+  {k:"tax ai",h:"Fixed assets & SALT",x:"Maintained tax basis records in the fixed asset system and supported state and local, property, and excise tax work."}
+ ]},
+ {t:"Tax Intern",co:"Grant Thornton LLP",loc:"Tulsa, OK",d:"Jan 2022 – Apr 2022",b:[
+  {k:"tax",h:"Provision audits",x:"Assisted with tax provision audits for midstream oil and gas companies."},
+  {k:"tax bd",h:"Multi-entity returns",x:"Prepared returns for partnerships, corporations, and trusts across real estate, broadcasting, and oil and gas, and researched property and state tax matters for aviation, pharmaceutical, and retail clients."}
+ ]}
+];
 
-function esc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+const PROJECTS=[
+ {k:"ai",i:"🤖",t:"Copilot adoption in Tax",s:"Bringing GenAI into a regulated, detail-heavy department.",
+  c:"Tax work involves a lot of repetitive data cleansing, reconciliation, and variance explanation, all of which take time away from analysis.",
+  a:"Led the department's adoption of Microsoft Copilot and GenAI for those tasks, kept CPA-level review on every output, and shared what worked through the \"Tip Tuesday\" series.",
+  o:"Measurable efficiency gains in the Tax Department, with AI best practices now spreading across Accounting & Finance.",tags:["Microsoft 365 Copilot","Copilot in Excel","Change management"]},
+ {k:"ai fpa",i:"📊",t:"Cash Tax Forecast rebuild",s:"From a patched legacy workbook to a scenario-ready model.",
+  c:"The enterprise Cash Tax Forecast relied on a legacy workbook weakened by years of incremental patches and inconsistent outer-year logic.",
+  a:"Redesigned the model end to end with streamlined, formula-driven, roll-forward-ready logic that can run scenarios for FP&A.",
+  o:"Reliable multi-year outputs, better forecast accuracy, and faster turnaround for FP&A planning.",tags:["Financial modeling","Advanced Excel","FP&A"]},
+ {k:"tax fpa",i:"🧮",t:"CAMT model",s:"Turning changing Treasury guidance into working model logic.",
+  c:"Corporate Alternative Minimum Tax guidance kept changing through a series of Treasury notices, each affecting AFSI adjustments.",
+  a:"Architected the CAMT model for compliance and multi-year forecasting, building Notices 2025-28, 2025-46, 2025-49, and 2026-7 into structured adjustment logic.",
+  o:"Refined AFSI adjustments and materially reduced projected CAMT liability.",tags:["CAMT","AFSI","Scenario modeling"]},
+ {k:"bd fpa tax",i:"🏗️",t:"Brazos Midland & Apollo",s:"$4.4B acquisition funded by $9.0B of structured equity.",
+  c:"The acquisition was funded through a non-voting, IRR-capped Class B structured equity investment held at a newly formed holding company.",
+  a:"Lead the tax workstream, modeling multi-year cash impacts and evaluating alternative structures with finance and deal counsel.",
+  o:"Gave decision-makers a clear view of the cash tax consequences of the structure options.",tags:["M&A","Structured equity","Cash modeling"]},
+ {k:"tax bd",i:"🔗",t:"Partnership basis framework",s:"Standardized, audit-ready reconciliation for complex JV structures.",
+  c:"ONEOK's complex partnership structure needed solid support for book-tax differences and inside and outside basis.",
+  a:"Designed a reconciliation framework covering basis adjustments (§§732, 743(b), 734(b)) and allocations (§§704(b), 704(c)).",
+  o:"Clear audit-defense support and better-informed planning and structuring decisions at the corporate partner level.",tags:["Partnership tax","Audit defense","JV structuring"]},
+ {k:"bd tax ai",i:"🔄",t:"EnLink integration",s:"Keeping compliance running through an ERP transition.",
+  c:"After the EnLink acquisition, Sales & Use Tax compliance for the acquired entity needed an owner during the system transition.",
+  a:"Took interim ownership, filed multi-state SUT returns, and supported the PeopleSoft ERP transition.",
+  o:"Uninterrupted reporting, stable tax operations, and lower compliance risk during the transition.",tags:["Integration","PeopleSoft","Multi-state SUT"]}
+];
 
-function apply(){
-  var term = document.getElementById('q').value.trim();
-  var rx = term ? new RegExp('('+esc(term)+')','ig') : null;
-  var shown = 0;
+const SKILLS=[
+ {k:"ai",i:"🤖",n:"AI & Automation",t:[["Microsoft 365 Copilot","Daily use"],["Copilot in Excel","Model build"],["Copilot Studio agents","Prototyping"],["Prompt design & scheduled prompts","Tip Tuesday"],["GenAI workflow design","Tax dept."],["AI training & adoption","A&F org"]]},
+ {k:"fpa",i:"📈",n:"Finance & Modeling",t:[["Multi-year forecasting","Cash tax"],["Scenario & sensitivity analysis","CAMT / M&A"],["Variance analysis, forecast vs. actual","Provision"],["Capital & acquisition evaluation","$40B+"],["Executive-ready memoranda","Leadership"]]},
+ {k:"tax",i:"📐",n:"Tax Technical",t:[["ASC 740 & tax provision","Monthly / qtrly"],["CAMT & AFSI","Model owner"],["Partnership basis §§732, 743(b), 734(b)","Framework"],["Allocations §§704(b), 704(c)","JV"],["IRC §§163(j), 382","Regulatory"],["Multi-state, FERC, Sales & Use, excise","Compliance"]]},
+ {k:"ai fpa",i:"🗄️",n:"Data & Systems",t:[["Advanced Excel","Formula-driven"],["Power BI","Reporting"],["ONESOURCE","Compliance"],["PeopleSoft ERP","Integration"],["Oracle","Source data"]]}
+];
 
-  bullets.forEach(function(li){
-    li.innerHTML = li.dataset.html;
-    var tagOK  = filter === 'all' || li.dataset.t.indexOf(filter) > -1;
-    var textOK = !term || li.textContent.toLowerCase().indexOf(term.toLowerCase()) > -1;
-    var ok = tagOK && textOK;
-    li.classList.toggle('dim', !ok);
-    if(ok){
-      shown++;
-      if(rx) li.innerHTML = li.innerHTML.replace(/>([^<]+)</g, function(m,t){
-        return '>' + t.replace(rx,'<mark>$1</mark>') + '<';
-      });
-    }
+/* ===================== ROUTER ===================== */
+const pages=["home","experience","projects","lab","skills","education","contact"];
+function go(p){location.hash=p}
+function route(){
+  const p=pages.includes(location.hash.slice(1))?location.hash.slice(1):"home";
+  document.querySelectorAll('.page').forEach(s=>s.classList.toggle('on',s.id==='p-'+p));
+  document.querySelectorAll('.links a').forEach(a=>a.classList.toggle('on',a.dataset.p===p));
+  document.getElementById('links').classList.remove('open');
+  window.scrollTo({top:0,behavior:'instant'});
+  setTimeout(reveal,50);
+}
+addEventListener('hashchange',route);
+
+/* ===================== LENS ===================== */
+function renderLensBars(){
+  document.querySelectorAll('.lensbar').forEach(bar=>{
+    bar.innerHTML='<span>Lens</span>'+Object.entries(LENSES).map(([k,v])=>`<button data-l="${k}" class="${k===lens?'on':''}">${v.icon} ${v.name}</button>`).join('');
   });
-
-  /* hide a job card entirely when none of its bullets survive */
-  jobs.forEach(function(j){
-    var any = j.querySelectorAll('li:not(.dim)').length > 0;
-    j.style.display = any ? '' : 'none';
-    if(any) j.classList.remove('closed');
-  });
-  document.getElementById('empty').style.display = shown ? 'none' : 'block';
+  document.getElementById('lensCards').innerHTML=Object.entries(LENSES).map(([k,v])=>
+    `<div class="card hov proj" data-l="${k}" style="${k===lens?'border-color:var(--c1)':''}"><div class="icon">${v.icon}</div><h3>${v.title}</h3><p class="tagline">${v.lead.split('. ')[0]}.</p><div class="more">${k===lens?'● active lens':'view as '+v.name+' →'}</div></div>`).join('');
+  document.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>setLens(b.dataset.l));
+}
+function setLens(l){
+  lens=l;localStorage.setItem('lens',l);
+  document.getElementById('heroLead').textContent=LENSES[l].lead;
+  renderLensBars();renderTimeline();renderProjects();renderSkills();
 }
 
-document.querySelectorAll('.btn[data-f]').forEach(function(b){
-  b.addEventListener('click', function(){
-    document.querySelectorAll('.btn[data-f]').forEach(function(x){ x.classList.remove('on'); });
-    b.classList.add('on');
-    filter = b.dataset.f;
-    apply();
-  });
-});
+/* ===================== TIMELINE ===================== */
+function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
+function renderTimeline(){
+  const q=(document.getElementById('q')||{value:''}).value.trim();
+  const rx=q?new RegExp('('+esc(q)+')','ig'):null;
+  document.getElementById('timeline').innerHTML=ROLES.map((r,ri)=>{
+    const sorted=[...r.b].sort((a,b)=>(b.k.split(' ')[0]===lens)-(a.k.split(' ')[0]===lens)||(b.k.includes(lens))-(a.k.includes(lens)));
+    const lis=sorted.map(x=>{
+      const txt=(x.h+' '+x.x).toLowerCase();
+      if(q&&!txt.includes(q.toLowerCase()))return'';
+      const hit=x.k.includes(lens);
+      let h=x.h,body=x.x;if(rx){h=h.replace(rx,'<mark>$1</mark>');body=body.replace(rx,'<mark>$1</mark>')}
+      return `<li class="${hit?'hit':'dim'}" data-badge="${LENSES[lens].name.toUpperCase()}"><b>${h}.</b> ${body}</li>`;
+    }).join('');
+    if(q&&!lis)return'';
+    return `<div class="card role" data-i="${ri}"><div class="role-head"><div><h3>${r.t}</h3><div class="meta">${r.co} · ${r.loc}</div></div>
+      <div style="display:flex;gap:10px;align-items:center"><span class="date">${r.d}</span><span class="caret">▾</span></div></div><ul>${lis}</ul></div>`;
+  }).join('')||'<p style="color:var(--muted)">No matches. Try another keyword.</p>';
+  document.querySelectorAll('.role-head').forEach(h=>h.onclick=()=>h.parentElement.classList.toggle('closed'));
+}
+document.addEventListener('input',e=>{if(e.target.id==='q')renderTimeline()});
+document.getElementById('toggleAll').onclick=function(){
+  const c=this.textContent.startsWith('Collapse');
+  document.querySelectorAll('.role').forEach(r=>r.classList.toggle('closed',c));
+  this.textContent=c?'Expand all':'Collapse all';
+};
 
-document.getElementById('q').addEventListener('input', apply);
+/* ===================== PROJECTS ===================== */
+function renderProjects(){
+  const list=[...PROJECTS].sort((a,b)=>b.k.includes(lens)-a.k.includes(lens));
+  document.getElementById('projGrid').innerHTML=list.map(p=>`<div class="card hov proj" data-p="${PROJECTS.indexOf(p)}" style="${p.k.includes(lens)?'':'opacity:.55'}">
+    <div class="icon">${p.i}</div><h3>${p.t}</h3><p class="tagline">${p.s}</p><div>${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div><div class="more">open case study →</div></div>`).join('');
+  document.querySelectorAll('#projGrid .proj').forEach(c=>c.onclick=()=>openProj(+c.dataset.p));
+}
+function openProj(i){const p=PROJECTS[i];
+  document.getElementById('modalBody').innerHTML=`<div class="icon" style="width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:26px;background:color-mix(in srgb,var(--c2) 18%,transparent);margin-bottom:14px">${p.i}</div>
+   <p class="eyebrow">case study</p><h2 style="font-size:30px">${p.t}</h2><p style="color:var(--muted);margin-top:0">${p.s}</p>
+   <div class="stage"><b>Challenge</b><div>${p.c}</div></div><div class="stage"><b>Approach</b><div>${p.a}</div></div><div class="stage"><b>Outcome</b><div>${p.o}</div></div>
+   <div style="margin-top:14px">${p.tags.map(t=>`<span class="chip ai">${t}</span>`).join('')}</div>`;
+  document.getElementById('modal').classList.add('on');}
+function closeModal(){document.getElementById('modal').classList.remove('on')}
+document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeModal()};
 
-/* expand / collapse individual roles */
-document.querySelectorAll('.job-head').forEach(function(h){
-  h.addEventListener('click', function(){ h.parentElement.classList.toggle('closed'); });
-});
+/* ===================== SKILLS ===================== */
+function renderSkills(){
+  const list=[...SKILLS].sort((a,b)=>b.k.includes(lens)-a.k.includes(lens));
+  document.getElementById('skillGrid').innerHTML=list.map(g=>`<div class="card hov skill-group" style="${g.k.includes(lens)?'border-color:color-mix(in srgb,var(--c1) 45%,transparent)':''}">
+    <h3><i>${g.i}</i>${g.n}</h3>${g.t.map(t=>`<div class="tool">${t[0]}<span>${t[1]}</span></div>`).join('')}</div>`).join('');
+}
 
-var tAll = document.getElementById('toggleAll');
-tAll.addEventListener('click', function(){
-  var collapse = tAll.textContent.indexOf('Collapse') === 0;
-  jobs.forEach(function(j){ j.classList.toggle('closed', collapse); });
-  tAll.textContent = collapse ? 'Expand all' : 'Collapse all';
-});
+/* ===================== CHAT ===================== */
+const KB=[
+ [/ai|copilot|automat|genai|agent|prompt|tip/i,"I led Microsoft Copilot and GenAI adoption in ONEOK's Tax Department, automating data cleansing, workpaper reconciliation, and variance analysis. I also run the \"Tip Tuesday\" series for Accounting & Finance and prototype Copilot Studio agents. The AI Lab page has more detail."],
+ [/camt|minimum tax|afsi|notice/i,"I architected and maintain ONEOK's Corporate Alternative Minimum Tax model. It builds Treasury Notices 2025-28, 2025-46, 2025-49, and 2026-7 into AFSI adjustment logic, which materially reduced projected CAMT liability."],
+ [/m&a|merger|acqui|deal|apollo|brazos|magellan|enlink|medallion/i,"I lead the tax workstream for the $4.4B Brazos Midland acquisition and the $9.0B Apollo Class B structured equity investment. Earlier, I supported the $18.8B Magellan, $7.6B EnLink, and $2.6B Medallion acquisitions. That's more than $40B in total."],
+ [/forecast|fp&a|fpa|model|budget|variance/i,"I rebuilt the enterprise Cash Tax Forecast model, which FP&A uses directly, replacing a heavily patched legacy workbook with a formula-driven, roll-forward-ready model that can run scenarios. I also explain period-over-period effective tax rate movements every month and quarter."],
+ [/partner|basis|732|743|704|jv|joint/i,"I designed a reconciliation framework for partnership inside and outside basis. It provides audit-defense support and covers §§732, 743(b), 734(b), 704(b), and 704(c) for planning at the corporate partner level."],
+ [/educat|degree|school|gpa|cpa|licen/i,"I'm a licensed CPA in Oklahoma (April 2025). I have an M.S. in Accounting and Financial Analysis (3.83) and a B.S. in Accounting and Finance (3.95) from Northeastern State University, and an A.S. from Tulsa Community College (4.00)."],
+ [/tool|excel|power ?bi|onesource|oracle|peoplesoft|system/i,"My toolkit: advanced Excel, Power BI, ONESOURCE, PeopleSoft ERP, Oracle, Microsoft 365 Copilot, Copilot in Excel, and Copilot Studio."],
+ [/provision|740|deferred|valuation|etr|effective/i,"I prepare the monthly and quarterly ASC 740 provision across a multi-entity consolidated group, covering current and deferred computations, valuation allowance analysis, interim rates, and ETR movements."],
+ [/contact|email|hire|reach|linkedin/i,"You can email me at baoqphan29@gmail.com or connect on LinkedIn. The Contact page has both links."],
+ [/role|fit|why|strength|hire you/i,"I combine CPA-level technical depth with an automation-first approach. Use the lens switcher to see how my experience fits AI & Automation, Tax, FP&A, or Business Development roles."]
+];
+const log=document.getElementById('chatLog');
+function add(t,who){const m=document.createElement('div');m.className='msg '+who;m.textContent=t;log.appendChild(m);log.scrollTop=log.scrollHeight;return m}
+function ask(q){
+  add(q,'me');
+  const typing=document.createElement('div');typing.className='msg bot typing';typing.innerHTML='<span></span><span></span><span></span>';log.appendChild(typing);log.scrollTop=log.scrollHeight;
+  const hit=KB.find(([rx])=>rx.test(q));
+  const ans=hit?hit[1]:"I don't have a prepared answer for that. Try asking about AI, CAMT, M&A, forecasting, partnership basis, tools, or education.";
+  setTimeout(()=>{typing.remove();const m=add('','bot');let i=0;const iv=setInterval(()=>{m.textContent=ans.slice(0,i+=3);log.scrollTop=log.scrollHeight;if(i>=ans.length)clearInterval(iv)},14)},700);
+}
+add("Hi! I'm a scripted assistant trained on Bao's resume. Ask me anything about his experience.",'bot');
+document.getElementById('sugg').innerHTML=["How do you use AI?","Tell me about M&A","What is the CAMT model?","Education?"].map(s=>`<button>${s}</button>`).join('');
+document.querySelectorAll('#sugg button').forEach(b=>b.onclick=()=>ask(b.textContent));
+document.getElementById('chatForm').onsubmit=e=>{e.preventDefault();const v=chatQ.value.trim();if(v){ask(v);chatQ.value=''}};
 
-/* theme */
-var th = document.getElementById('theme');
-th.addEventListener('click', function(){
-  var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-  document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
-  th.textContent = dark ? 'Dark' : 'Light';
-});
+/* ===================== HERO TYPING + TERMINAL ===================== */
+const phrases=["Corporate Tax · ASC 740 · CAMT","Copilot & GenAI adoption lead","Enterprise forecast modeler","$40B+ in transactions supported","Turning manual work into automated workflows"];
+let pi=0,ci=0,del=false;const ty=document.getElementById('typed');
+(function tick(){const p=phrases[pi];ty.textContent=p.slice(0,ci);
+  if(!del&&ci++===p.length){del=true;return setTimeout(tick,1700)}
+  if(del&&ci--===0){del=false;pi=(pi+1)%phrases.length}
+  setTimeout(tick,del?28:55)})();
+const termHTML=`<span class="c"># profile.py</span>
+<span class="k">class</span> <span class="s">QuocBaoPhan</span>(CPA):
+    location   = <span class="n">"Tulsa, OK"</span>
+    company    = <span class="n">"ONEOK, Inc."</span>
+    role       = <span class="n">"Tax Analyst III"</span>
+    focus      = [<span class="n">"Tax"</span>, <span class="n">"FP&A"</span>, <span class="n">"M&A"</span>, <span class="n">"AI"</span>]
+    deals_bn   = <span class="n">40</span>  <span class="c"># and counting</span>
+    ai_stack   = [<span class="n">"Copilot"</span>, <span class="n">"Copilot Studio"</span>,
+                  <span class="n">"Power BI"</span>, <span class="n">"Excel"</span>]
+
+    <span class="k">def</span> <span class="s">work</span>(self, process):
+        process = self.<span class="s">rebuild</span>(process)
+        process = self.<span class="s">automate</span>(process, ai=<span class="k">True</span>)
+        <span class="k">return</span> self.<span class="s">teach_team</span>(process)
+
+<span class="c">>>> status: </span><span class="s">open_to_opportunities ✓</span>`;
+(function typeTerm(){const el=document.getElementById('term');const tmp=document.createElement('div');tmp.innerHTML=termHTML;
+  const nodes=[...tmp.childNodes];el.innerHTML='';let ni=0,ch=0,cur=null;
+  const iv=setInterval(()=>{if(ni>=nodes.length)return clearInterval(iv);const n=nodes[ni];
+    if(!cur){cur=n.nodeType===3?document.createTextNode(''):n.cloneNode(false);el.appendChild(cur)}
+    const full=n.textContent;ch+=2;cur.textContent=full.slice(0,ch);if(ch>=full.length){ni++;ch=0;cur=null}},12)})();
+
+/* ===================== COUNTERS + REVEAL ===================== */
+function reveal(){
+  document.querySelectorAll('.page.on .reveal:not(.in)').forEach(el=>io.observe(el));
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');io.unobserve(e.target);
+  e.target.querySelectorAll('[data-count]').forEach(n=>{const t=+n.dataset.count,pre=n.dataset.pre||'',suf=n.dataset.suf||'';let v=0;
+    const iv=setInterval(()=>{v+=Math.max(1,Math.ceil(t/30));if(v>=t){v=t;clearInterval(iv)}n.textContent=pre+v+suf},35)})}),{threshold:.2});
+
+/* ===================== NEURAL NETWORK BACKGROUND ===================== */
+const cv=document.getElementById('net'),cx=cv.getContext('2d');let pts=[],mouse={x:-999,y:-999};
+function size(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio;cx.scale(devicePixelRatio,devicePixelRatio);
+  pts=Array.from({length:Math.min(90,Math.floor(innerWidth/16))},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}))}
+addEventListener('resize',()=>{cx.setTransform(1,0,0,1,0,0);size()});addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+function draw(){const s=getComputedStyle(document.documentElement);const c1=s.getPropertyValue('--c1').trim(),c2=s.getPropertyValue('--c2').trim();
+  cx.clearRect(0,0,innerWidth,innerHeight);
+  for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>innerWidth)p.vx*=-1;if(p.y<0||p.y>innerHeight)p.vy*=-1;
+    const dm=Math.hypot(p.x-mouse.x,p.y-mouse.y);if(dm<140){p.x+=(p.x-mouse.x)/dm*.8;p.y+=(p.y-mouse.y)/dm*.8}
+    cx.fillStyle=c1;cx.globalAlpha=.8;cx.beginPath();cx.arc(p.x,p.y,1.6,0,7);cx.fill()}
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);
+    if(d<130){cx.globalAlpha=(1-d/130)*.35;cx.strokeStyle=(i%3?c2:c1);cx.lineWidth=.7;cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.stroke()}}
+  cx.globalAlpha=1;if(!matchMedia('(prefers-reduced-motion: reduce)').matches)requestAnimationFrame(draw)}
+size();draw();
+
+/* ===================== COMMAND PALETTE ===================== */
+const pal=document.getElementById('pal'),palQ=document.getElementById('palQ'),palList=document.getElementById('palList');
+const CMDS=[...pages.map(p=>({l:'Go to '+p[0].toUpperCase()+p.slice(1),t:'page',f:()=>go(p)})),
+  ...Object.entries(LENSES).map(([k,v])=>({l:'Lens: '+v.name,t:'lens',f:()=>setLens(k)})),
+  ...PROJECTS.map((p,i)=>({l:'Project: '+p.t,t:'case',f:()=>{go('projects');setTimeout(()=>openProj(i),80)}})),
+  {l:'Toggle light / dark theme',t:'ui',f:toggleTheme},{l:'Print resume',t:'ui',f:()=>print()},{l:'Email Bao',t:'contact',f:()=>location.href='mailto:baoqphan29@gmail.com'}];
+let sel=0,filtered=CMDS;
+function drawPal(){const q=palQ.value.toLowerCase();filtered=CMDS.filter(c=>c.l.toLowerCase().includes(q));sel=Math.min(sel,Math.max(0,filtered.length-1));
+  palList.innerHTML=filtered.map((c,i)=>`<div class="pal-item ${i===sel?'sel':''}" data-i="${i}">${c.l}<span>${c.t}</span></div>`).join('');
+  palList.querySelectorAll('.pal-item').forEach(el=>el.onclick=()=>runCmd(+el.dataset.i))}
+function openPal(){pal.classList.add('on');palQ.value='';sel=0;drawPal();setTimeout(()=>palQ.focus(),20)}
+function runCmd(i){const c=filtered[i];pal.classList.remove('on');c&&c.f()}
+palQ.oninput=()=>{sel=0;drawPal()};
+palQ.onkeydown=e=>{if(e.key==='ArrowDown'){sel=Math.min(sel+1,filtered.length-1);drawPal();e.preventDefault()}
+  if(e.key==='ArrowUp'){sel=Math.max(sel-1,0);drawPal();e.preventDefault()}if(e.key==='Enter')runCmd(sel)};
+pal.onclick=e=>{if(e.target===pal)pal.classList.remove('on')};
+addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openPal()}
+  if(e.key==='Escape'){pal.classList.remove('on');closeModal()}});
+document.getElementById('palBtn').onclick=openPal;
+
+/* ===================== MISC ===================== */
+function toggleTheme(){const r=document.documentElement;const l=r.dataset.theme==='light';r.dataset.theme=l?'dark':'light';localStorage.setItem('theme',r.dataset.theme)}
+document.getElementById('theme').onclick=toggleTheme;
+if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light';
+document.getElementById('menuBtn').onclick=()=>document.getElementById('links').classList.toggle('open');
+document.getElementById('copyEmail').onclick=function(){navigator.clipboard.writeText('baoqphan29@gmail.com');this.textContent='✓ Copied'};
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+setLens(lens);route();
 </script>
 </body>
 </html>
